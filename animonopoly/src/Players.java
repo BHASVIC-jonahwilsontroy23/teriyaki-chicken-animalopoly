@@ -23,6 +23,18 @@ public class Players {
         System.out.println("____________________________________\nPlayer " + name + "'s turn.");
     }
 
+    public boolean isNextMoveIsAvailable() {
+        return nextMoveIsAvailable;
+    }
+
+    public String getPlayingPiece() {
+        return playingPiece;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public void winCheck() {
     }
 
