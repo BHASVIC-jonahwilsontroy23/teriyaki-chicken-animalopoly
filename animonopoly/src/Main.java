@@ -3,11 +3,18 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) {   //initialises the GUI
         SwingUtilities.invokeLater(() -> {
             GameBoard gui = new GameBoard();
             gui.setVisible(true);
         });
+
+        Board board = new Board(); //this is our only board.
+
+
+
+
+
         System.out.println("Hello world!");
         //instantiate a board object
         //instantiate player objects in an array
