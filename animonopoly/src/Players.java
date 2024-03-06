@@ -6,9 +6,11 @@ public class Players {
     String playingPiece;
     String name;
     boolean nextMoveIsAvailable;
-    public Players() {
+    public Players(String nameInput, String playingPieceInput) {
         money = 1000;
         nextMoveIsAvailable = true;
+        name = nameInput;
+        playingPiece = playingPieceInput;
     }
 
     public void bankruptcyCheck() {

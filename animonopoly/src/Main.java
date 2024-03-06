@@ -14,18 +14,6 @@ public class Main {
 
 
 
-
-        System.out.println("Hello world!");
-        //instantiate a board object
-        //instantiate player objects in an array
-        ArrayList<Players> players = new ArrayList<>();
-        String nameInput = "test Name";
-        //players.add(new Players(nameInput));
-
-        //board:
-            //instantiate a dice object
-            //keep track of turns, and display player's name with player.announceName();
-
         Scanner scan = new Scanner(System.in);
         System.out.println("**This is an example input**\nenter player 1's name: ");
         System.out.println("[1] option 1");
@@ -35,10 +23,7 @@ public class Main {
         String input = scan.nextLine();
         System.out.println(input);
 
-        //testing a player's method:
-        Players player1 = new Players();
-        player1.name = input;
-        player1.announceName();
+
 
 
         //end
