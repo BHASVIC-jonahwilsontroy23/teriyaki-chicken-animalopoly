@@ -38,7 +38,7 @@ level 4 rent = 375
 level 1 rent = 10
 level 2 rent = 32
 level 3 rent = 160
-level 4 rent = 
+level 4 rent =
 4 dog - 250
 5 cat - 300
 
