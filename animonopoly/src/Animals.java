@@ -23,15 +23,22 @@ animals:
 
 level 1 rent = 8
 level 2 rent = 25
+level 3 rent = 125
+level 4 rent = 375
 
 2 polar bear - 100
 
 level 1 rent = 8
+level 2 rent = 25
+level 3 rent = 125
+level 4 rent = 375
 
 3 seal - 125
 
 level 1 rent = 10
-
+level 2 rent = 32
+level 3 rent = 160
+level 4 rent = 
 4 dog - 250
 5 cat - 300
 
