@@ -2,9 +2,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 public class Board {
     int playersRemaining;
-    int userInput;
-    Players[] playersArray;
 
+    Players[] playersArray; //2-8 players
     public Board() {
         Scanner scan = new Scanner(System.in);
         Dice die = new Dice();
@@ -60,7 +59,7 @@ public class Board {
                 }
             }
 
-            playersArray[i] = new Players(nameInput, playingPieceInput);
+            playersArray[i] = new Players(nameInput, playingPieceInput, this);
             System.out.println("Your name is now: " + playersArray[i].getName() + "\nAnd your piece is: " + playersArray[i].getPlayingPiece());
 
         }
@@ -100,6 +99,10 @@ public class Board {
 
         return flag;
     } //used in player initialisation
+
+    public int getPlayersRemaining() {
+        return playersRemaining;
+    }
 
 
 }
