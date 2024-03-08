@@ -67,20 +67,7 @@
                 <constraints border-constraint="North"/>
                 <properties/>
                 <border type="line"/>
-                <children>
-                  <splitpane id="4232c">
-                    <constraints/>
-                    <properties>
-                      <continuousLayout value="false"/>
-                      <dividerLocation value="102"/>
-                      <dividerSize value="100"/>
-                      <oneTouchExpandable value="true"/>
-                      <orientation value="1"/>
-                    </properties>
-                    <border type="line"/>
-                    <children/>
-                  </splitpane>
-                </children>
+                <children/>
               </grid>
               <grid id="ec1a9" layout-manager="FlowLayout" hgap="500" vgap="50" flow-align="1">
                 <constraints border-constraint="South"/>
