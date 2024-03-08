@@ -366,7 +366,7 @@ public class Animals {
     String name;
     int group;
     int upgcost;
-    public Animals (int space1, int cost1,int group1,,int upgcost1, String name1){
+    public Animals (int space1, int cost1,int group1,int upgcost1, String name1){
         space = space1;
         owned = false;
         cost = cost1;
