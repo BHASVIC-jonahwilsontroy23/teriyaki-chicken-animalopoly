@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/animonopoly.iml" filepath="$PROJECT_DIR$/animonopoly.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/teriyaki-chicken-animalopoly.iml" filepath="$PROJECT_DIR$/.idea/teriyaki-chicken-animalopoly.iml" />
     </modules>
   </component>
 </project>
