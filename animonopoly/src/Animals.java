@@ -25,7 +25,7 @@ ___________________
 
 cost of upgrade: 100
 
-level 1 rent = 8
+level 1 rent = 12
 level 2 rent = 25
 level 3 rent = 125
 level 4 rent = 375
@@ -38,7 +38,7 @@ ___________________
 
 cost of upgrade: 100
 
-level 1 rent = 8
+level 1 rent = 12
 level 2 rent = 25
 level 3 rent = 125
 level 4 rent = 375
@@ -374,5 +374,16 @@ public class Animals {
         group = group1;
         upgcost = upgcost1;
         name = name1;
+    }
+    public int[] GetLevels(){
+        int l1,l2,l3,l4;
+        int costlocal = cost;
+        l1 = 2+costlocal/10;
+        l2 = costlocal/4;
+        l3 = l2*5;
+        l4 = l3*3;
+        int levels[] = {l1,l2,l3,l4};
+        System.out.println(l1+" "+l2+" "+l3+" "+l4);
+        return levels;
     }
 }
