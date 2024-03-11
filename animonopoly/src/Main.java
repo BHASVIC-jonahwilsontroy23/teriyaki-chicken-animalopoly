@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args){
         // Instantiate all animals
+    public static void main(String[] args) {
         Animals Penguin = new Animals(1,100,1,100,"Penguin");
         Animals Polar_Bear = new Animals(2,100,1,100,"Penguin");
         Animals Seal = new Animals(3,125,1,100,"Penguin");
