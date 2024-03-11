@@ -14,10 +14,10 @@ public class Main {
         Animals Catfish = new Animals(7,150,3,150,"Catfish");
         Animals Dogfish = new Animals(8,150,3,150,"Dogfish");
         Animals Sheep = new Animals(9,75,4,50,"Sheep");
-        /*
+
         GameBoard gameBoard = new GameBoard();
         Board board = new Board(); //this is our only board.
-
+        /*
 
 
 

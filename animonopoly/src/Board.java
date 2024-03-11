@@ -17,14 +17,41 @@ public class Board {
         ArrayList<Players> players = new ArrayList<>();
 
         Scanner scan = new Scanner(System.in);
+        /*//
+        int desiredPlayerCount;
+        while (true) {
+
+            String desiredPlayerCountRawInput;
+            System.out.println("How many players will be playing? (2-8)");
+            desiredPlayerCountRawInput = scan.nextLine();
+            String[] parts = desiredPlayerCountRawInput.split("\\S+");
+            try {
+                if (parts.length > 0) {
+                    desiredPlayerCount = Integer.parseInt(parts[0]);
+                    if (desiredPlayerCount <= 8 && desiredPlayerCount >= 2) {
+                        break;
+                    } else {
+                        System.out.println(">Invalid input value");
+                    }
+                } else {
+                    System.out.println("missing input");
+                }
+            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
+                System.out.println(">Invalid input format");
+            }
+            */
         int desiredPlayerCount;
         while (true) {
             System.out.println("How many players will be playing? (2-8)");
-            desiredPlayerCount = scan.nextInt();
-            if (desiredPlayerCount <= 8 && desiredPlayerCount >= 2) {
-                break;
+            if (scan.hasNextInt()) {
+                desiredPlayerCount = scan.nextInt();
+                if (desiredPlayerCount <= 8 && desiredPlayerCount >= 2) {
+                    break;
+                } else {
+                    System.out.println(">Invalid input value");
+                }
             } else {
-                System.out.println(">Input is invalid");
+                System.out.println("Invalid input format");
             }
         }
 
@@ -55,7 +82,7 @@ public class Board {
                     System.out.println(">Input accepted");
                     break;
                 } else {
-                    System.out.println(">Input not accepted. above the ");
+                    System.out.println(">Input not accepted");
                 }
             }
 
@@ -63,7 +90,7 @@ public class Board {
             System.out.println("Your name is now: " + playersArray[i].getName() + "\nAnd your piece is: " + playersArray[i].getPlayingPiece());
 
         }
-        //players.add(new Players(nameInput));
+        scan.close();
 
         //board:
         //instantiate a dice object
@@ -73,30 +100,31 @@ public class Board {
 
     public boolean playerInfoInputIsValid(String theInput, int nameOrPiece) {
         boolean flag = true;
-        if (nameOrPiece == 0) {
-
-            for (Players players : playersArray) {
-                if (theInput.equals(players.name)) {
+            if (nameOrPiece == 0) {
+                for (Players players : playersArray) {
+                    if (players != null) {
+                        if (theInput.equals(players.getName())) {
+                        flag = false;
+                        break;
+                        }
+                    }
+                }
+                if (theInput.length() > 20) {
                     flag = false;
-                    break;
+                }
+            } else {
+                for (Players players : playersArray) {
+                    if (players != null) {
+                    if (theInput.equals(players.getPlayingPiece())) {
+                        flag = false;
+                        break;
+                    }
                 }
             }
-            if (theInput.length() > 20) {
-                flag = false;
-            }
-
-        } else {
-            for (Players players : playersArray) {
-                if (theInput.equals(players.playingPiece)) {
+                if (theInput.length() > 3) {
                     flag = false;
-                    break;
                 }
             }
-            if (theInput.length() > 3) {
-                flag = false;
-            }
-        }
-
         return flag;
     } //used in player initialisation
 
