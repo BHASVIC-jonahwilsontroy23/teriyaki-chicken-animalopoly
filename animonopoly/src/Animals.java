@@ -21,6 +21,9 @@ methods:
 ___________________
 
 
+
+RENT AMOUNTS WILL NOT BE THE SAME WHEN CALLED FROM GetLevels(), this is a ROUGH GUIDE !!!!!
+
 1 Penguin - 100
 
 cost of upgrade: 100
@@ -349,6 +352,9 @@ level 3 rent = 219
 level 4 rent = 657
 
 group 9
+
+RENT AMOUNTS WILL NOT BE THE SAME WHEN CALLED FROM GetLevels(), this is a ROUGH GUIDE !!!!!
+
 
 ___________________
 
