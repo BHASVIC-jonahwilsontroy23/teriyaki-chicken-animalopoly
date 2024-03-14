@@ -391,5 +391,16 @@ public class Animals {
         int levels[] = {l1,l2,l3,l4};
         System.out.println(l1+" "+l2+" "+l3+" "+l4);
         return levels;
+
+        // this will return an array with all levels of rent from 1-4
+
+        /*
+        example:
+
+        variable = Badger.GetLevels();
+        System.out.println(variable)
+
+        will output [rentlevel1,rentlevel2,rentlevel3,rentlevel4]
+         */
     }
 }
