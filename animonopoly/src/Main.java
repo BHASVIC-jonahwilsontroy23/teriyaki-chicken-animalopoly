@@ -14,9 +14,6 @@ public class Main {
         Animals Catfish = new Animals(7,150,3,150,"Catfish");
         Animals Dogfish = new Animals(8,150,3,150,"Dogfish");
         Animals Sheep = new Animals(9,75,4,50,"Sheep");
-<<<<<<< Updated upstream
-
-=======
         Animals Cow = new Animals(10,75,4,50,"Cow");
         Animals Rabbit = new Animals(11,125,5,125,"Rabbit");
         Animals Guinea_Pig = new Animals(12,125,5,125,"Guinea Pig");
@@ -35,7 +32,6 @@ public class Main {
 
         
         /*
->>>>>>> Stashed changes
         GameBoard gameBoard = new GameBoard();
         Board board = new Board(); //this is our only board.
         /*
