@@ -17,29 +17,6 @@ public class Board {
         ArrayList<Players> players = new ArrayList<>();
 
         Scanner scan = new Scanner(System.in);
-        /*//
-        int desiredPlayerCount;
-        while (true) {
-
-            String desiredPlayerCountRawInput;
-            System.out.println("How many players will be playing? (2-8)");
-            desiredPlayerCountRawInput = scan.nextLine();
-            String[] parts = desiredPlayerCountRawInput.split("\\S+");
-            try {
-                if (parts.length > 0) {
-                    desiredPlayerCount = Integer.parseInt(parts[0]);
-                    if (desiredPlayerCount <= 8 && desiredPlayerCount >= 2) {
-                        break;
-                    } else {
-                        System.out.println(">Invalid input value");
-                    }
-                } else {
-                    System.out.println("missing input");
-                }
-            } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-                System.out.println(">Invalid input format");
-            }
-            */
         int desiredPlayerCount = getDesiredPlayerCount();
 
         playersArray = new Players[desiredPlayerCount];
