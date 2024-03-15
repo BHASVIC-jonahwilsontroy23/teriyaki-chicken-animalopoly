@@ -40,20 +40,7 @@ public class Board {
                 System.out.println(">Invalid input format");
             }
             */
-        int desiredPlayerCount;
-        while (true) {
-            System.out.println("How many players will be playing? (2-8)");
-            if (scan.hasNextInt()) {
-                desiredPlayerCount = scan.nextInt();
-                if (desiredPlayerCount <= 8 && desiredPlayerCount >= 2) {
-                    break;
-                } else {
-                    System.out.println(">Invalid input value");
-                }
-            } else {
-                System.out.println("Invalid input format");
-            }
-        }
+        int desiredPlayerCount = getDesiredPlayerCount();
 
         playersArray = new Players[desiredPlayerCount];
 
@@ -90,7 +77,6 @@ public class Board {
             System.out.println("Your name is now: " + playersArray[i].getName() + "\nAnd your piece is: " + playersArray[i].getPlayingPiece());
 
         }
-        scan.close();
 
         //board:
         //instantiate a dice object
@@ -132,5 +118,30 @@ public class Board {
         return playersRemaining;
     }
 
+    public int getDesiredPlayerCount() {
+        Scanner scan = new Scanner(System.in);
+        int desiredPlayerCount = 0;
+        while (true) {
+            System.out.println("How many players will be playing? (2-8)");
+            try {
+
+
+                    desiredPlayerCount = Integer.parseInt(scan.nextLine());
+
+                    if (desiredPlayerCount <= 8 && desiredPlayerCount >= 2) {
+                        break;
+                    } else {
+                        System.out.println(">Invalid input value");
+                    }
+
+
+
+            } catch (NumberFormatException e) {
+                System.out.println(">Invalid input format");
+            }
+        }
+
+        return desiredPlayerCount;
+    }
 
 }

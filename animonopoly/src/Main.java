@@ -31,7 +31,7 @@ public class Main {
         Animals Badger = new Animals(24,175,9,175,"Badger");
 
         
-        /*
+
         GameBoard gameBoard = new GameBoard();
         Board board = new Board(); //this is our only board.
         /*
