@@ -11,7 +11,7 @@ public class Board {
         initialisePlayers();
 
     }
-    Animals[] animalArray;
+    Animals[] animalArray = new Animals[26];
     public void initialiseAnimals(){
         animalArray[0] = new Animals(1,100,1,100,"Penguin");
         animalArray[1] = new Animals(2,100,1,100,"Polar_Bear");
@@ -91,7 +91,9 @@ public class Board {
         //keep track of turns, and display player's name with player.announceName();
 
     }
-
+    public Animals getAnimal(int index) {
+        return animalArray[index];
+    }
     public boolean playerInfoInputIsValid(String theInput, int nameOrPiece) {
         boolean flag = true;
             if (nameOrPiece == 0) {
