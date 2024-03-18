@@ -1,7 +1,10 @@
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class GameBoard extends JFrame {
+    String[] spacesText = new String[26];
+    JButton[] spacesArray = new JButton[26];
     private JPanel panel1;
     private JPanel animalViewerContainer;
     private JPanel westTiles;
@@ -26,6 +29,7 @@ public class GameBoard extends JFrame {
     private JTextField space7;
     private JButton button1;
     private JTextField space1;
+    private JButton button2;
 
     public GameBoard() {
         setContentPane(panel1);
@@ -37,6 +41,8 @@ public class GameBoard extends JFrame {
         setLocationRelativeTo(null);
         pack();
         setVisible(true);
+
+        initialiseGameBoard();
 
         panel1.addMouseListener(new MouseAdapter() {
 
@@ -54,14 +60,40 @@ public class GameBoard extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("gfghgh");
                 myInteger += 1;
-                button1.setText(String.valueOf(myInteger) + "\n animal name\nplayers");
+                String template = "<html>%d<br />animal name<br />players</html>";
+                String text = String.format(template, myInteger);
+                button1.setText(text);
                 space0.setText(String.valueOf(myInteger) + "\n animal name\nplayers");
                 space1.setText(String.valueOf(myInteger) + "\n animal name\nplayers");
             }
         });
     }
 
+    public void setPlayersPresent(int space, Players player, boolean remove) {
+        if (!remove) {
+            spacesText[space] = spacesText[space] + " " + player.getPlayingPiece();
+        } else {
+            spacesText[space] = spacesText[space].replace(player.getPlayingPiece(), "");
+        }
+    } // enabling remove, removes the players piece from a space.
 
+    public void setAnimalName(String newAnimalName) {
+        animalNameTextArea.setText(newAnimalName);
+    }
+    public void setAnimalDesc(String newAnimalDesc) {
+        animalDetailsTextArea.setText(newAnimalDesc);
+    }
+
+    public void initialiseGameBoard() {
+        //xyz
+        for (int i =0; i<spacesArray.length; i++) {
+            spacesArray[i] = button1;
+            spacesArray[i].setText("");
+        }
+
+
+        //xyz
+    }
 
 }
 
