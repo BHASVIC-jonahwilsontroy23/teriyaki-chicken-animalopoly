@@ -1,7 +1,5 @@
 import javax.swing.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 public class GameBoard extends JFrame {
     private JPanel panel1;
@@ -26,6 +24,8 @@ public class GameBoard extends JFrame {
     private JTextField space5;
     private JTextField space6;
     private JTextField space7;
+    private JButton button1;
+    private JTextField space1;
 
     public GameBoard() {
         setContentPane(panel1);
@@ -40,18 +40,23 @@ public class GameBoard extends JFrame {
 
         panel1.addMouseListener(new MouseAdapter() {
 
-            int myInteger = 0;
             @Override
             public void mouseClicked(MouseEvent clicked) {
                 if( clicked.getSource() instanceof JPanel ) {
-                    if (myInteger <10) {
-                        myInteger += 1;
-                        clicked.getComponent().setName(String.valueOf(myInteger));
-                    }
-                    System.out.println( clicked.getComponent().getName() ); }
-                if( clicked.getSource() instanceof JTextArea ) {
                     System.out.println( clicked.getComponent().getName() ); }
 
+            }
+        });
+
+        button1.addActionListener(new ActionListener() {
+            int myInteger = 0;
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("gfghgh");
+                myInteger += 1;
+                button1.setText(String.valueOf(myInteger) + "\n animal name\nplayers");
+                space0.setText(String.valueOf(myInteger) + "\n animal name\nplayers");
+                space1.setText(String.valueOf(myInteger) + "\n animal name\nplayers");
             }
         });
     }
