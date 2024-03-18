@@ -4,13 +4,44 @@ public class Board {
     int playersRemaining;
 
     Players[] playersArray; //2-8 players
+
     public Board() {
         Scanner scan = new Scanner(System.in);
         Dice die = new Dice();
         initialisePlayers();
 
     }
+    Animals[] animalArray;
+    public void initialiseAnimals(){
+        animalArray[0] = new Animals(1,100,1,100,"Penguin");
+        animalArray[1] = new Animals(2,100,1,100,"Polar_Bear");
+        animalArray[2] = new Animals(3,125,1,125,"Seal");
+        animalArray[3] = new Animals(4,250,2,300,"Dog");
+        animalArray[4] = new Animals(5,300,2,400,"Cat");
+        animalArray[5] = new Animals(6,150,3,150,"Clownfish");
+        animalArray[6] = new Animals(7,150,3,150,"Catfish");
+        animalArray[7] = new Animals(8,150,3,150,"Dogfish");
+        animalArray[8] = new Animals(9,75,4,50,"Sheep");
+        animalArray[9] = new Animals(10,75,4,50,"Cow");
+        animalArray[10] = new Animals(11,125,5,125,"Rabbit");
+        animalArray[11] = new Animals(12,125,5,125,"Guinea Pig");
+        animalArray[12] = new Animals(14,125,5,125,"Hamster");
+        animalArray[13] = new Animals(15,200,6,250,"Snake");
+        animalArray[14] = new Animals(16,200,6,250,"Gecko");
+        animalArray[15] = new Animals(17,200,6,250,"Bearded Dragon");
+        animalArray[16] = new Animals(18,125,7,125,"Ant");
+        animalArray[17] = new Animals(19,150,7,150,"Woodlouse");
+        animalArray[18] = new Animals(20,150,7,150,"Millipede");
+        animalArray[19] = new Animals(21,150,8,150,"Deer");
+        animalArray[20] = new Animals(22,150,8,150,"Horse");
+        animalArray[21] = new Animals(23,175,8,175,"Bear");
+        animalArray[22] = new Animals(24,175,9,175,"Raccoon");
+        animalArray[23] = new Animals(25,175,9,175,"Badger");
+    }
 
+    public Animals GetAnimals(int num){
+        return animalArray[num+1];
+    }
 
     public void initialisePlayers() {
         System.out.println(">Initialising players");

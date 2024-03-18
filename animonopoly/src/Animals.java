@@ -1,23 +1,4 @@
 /*
-***24 animals needed***
-
-variables:
- space-int
- owned-boolean
- cost-int
- stoplevel-int
- name-string
- owner-string
- stoplevel(costs[4])-int
-
-methods:
- getstoplevel()-int
- getowned()-boolean
- purchase()-void
- */
-
-/*
-
 ___________________
 
 
@@ -364,7 +345,6 @@ ___________________
 
 public class Animals {
     // create attributes
-
     int space;
     boolean owned;
     int cost;
@@ -381,6 +361,8 @@ public class Animals {
         upgcost = upgcost1;
         name = name1;
     }
+
+
     public int[] GetLevels(){
         int l1,l2,l3,l4;
         int costlocal = cost;
