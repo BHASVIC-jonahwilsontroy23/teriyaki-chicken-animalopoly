@@ -6,13 +6,6 @@ public class Main {
         // Instantiate all animals
     public static void main(String[] args) {
 
-<<<<<<< Updated upstream
-        
-=======
-
-
->>>>>>> Stashed changes
-
         GameBoard gameBoard = new GameBoard();
         Board board = new Board(); //this is our only board.
         board.initialiseAnimals();
