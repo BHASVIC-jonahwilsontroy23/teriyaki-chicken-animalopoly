@@ -8,12 +8,14 @@ public class Board {
     public Board() {
         Scanner scan = new Scanner(System.in);
         Dice die = new Dice();
+        initialiseAnimals();
+        GameBoard gameBoard = new GameBoard(this);
         initialisePlayers();
 
     }
     Animals[] animalArray = new Animals[26];
     public void initialiseAnimals(){
-        animalArray[0] = new Animals(1,100,1,100,"Penguin");
+        animalArray[0] = new Animals(-1,-1,-1,-1,"");
         animalArray[1] = new Animals(2,100,1,100,"Polar_Bear");
         animalArray[2] = new Animals(3,125,1,125,"Seal");
         animalArray[3] = new Animals(4,250,2,300,"Dog");
@@ -26,7 +28,7 @@ public class Board {
         animalArray[10] = new Animals(11,125,5,125,"Rabbit");
         animalArray[11] = new Animals(12,125,5,125,"Guinea Pig");
         animalArray[12] = new Animals(14,125,5,125,"Hamster");
-        animalArray[13] = new Animals(15,200,6,250,"Snake");
+        animalArray[13] = new Animals(-1,-1,-1,-1,"");
         animalArray[14] = new Animals(16,200,6,250,"Gecko");
         animalArray[15] = new Animals(17,200,6,250,"Bearded Dragon");
         animalArray[16] = new Animals(18,125,7,125,"Ant");
@@ -37,10 +39,12 @@ public class Board {
         animalArray[21] = new Animals(23,175,8,175,"Bear");
         animalArray[22] = new Animals(24,175,9,175,"Raccoon");
         animalArray[23] = new Animals(25,175,9,175,"Badger");
+        animalArray[24] = new Animals(1,100,1,100,"Penguin");
+        animalArray[25] = new Animals(15,200,6,250,"Snake");
     }
 
-    public Animals GetAnimals(int num){
-        return animalArray[num+1];
+    public Animals GetAnimal(int num){
+        return animalArray[num];
     }
 
     public void initialisePlayers() {

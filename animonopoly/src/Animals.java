@@ -385,4 +385,8 @@ public class Animals {
         will output [rentlevel1,rentlevel2,rentlevel3,rentlevel4]
          */
     }
+
+    public String getName() {
+        return name;
+    }
 }
