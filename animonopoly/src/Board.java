@@ -1,3 +1,5 @@
+package animonopoly.src;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Board {

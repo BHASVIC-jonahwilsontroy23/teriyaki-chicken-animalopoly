@@ -23,10 +23,11 @@ public class Main {
         */
         while (1 == 1) {
             int playerscount = board.playersArray.length + 1;
-            for (int i = 0; i < playerscount; i++) {
+            for (int i = 0; i < playerscount-1; i++) {
 
                 if (board.playersArray[i].bankruptcyCheck() == false) {
-                    System.out.println("Player "+i+", it is your turn.");
+                    String nameplayer = board.playersArray[i].getName();
+                    System.out.println(nameplayer+", it is your turn.");
                     Scanner scan = new Scanner(System.in);
                     int roll = 2;
                     while (roll != 1) {
