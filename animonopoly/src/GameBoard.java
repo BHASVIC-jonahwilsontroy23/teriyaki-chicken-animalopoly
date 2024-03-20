@@ -1,10 +1,12 @@
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class GameBoard extends JFrame {
     String[] spacesText = new String[26];
     JButton[] spacesArray = new JButton[26];
     int spaceClicked = -1; //-1 means that there is no valid space last clicked.
+    int buttonInputChoice = -1;
     private JPanel panel1;
     private JPanel animalViewerContainer;
     private JPanel westTiles;
@@ -48,6 +50,8 @@ public class GameBoard extends JFrame {
     private JButton button23;
     private JButton button24;
     private JButton button25;
+    private JButton buttonA;
+    private JButton buttonB;
     Board board;
     int myInteger = 0;
 
@@ -63,6 +67,8 @@ public class GameBoard extends JFrame {
         pack();
         setVisible(true);
 
+        Players player1 = new Players("hello", "XYZ", board);
+
         initialiseGameBoard();
         { //collapse this. trust me bro.
             button0.addActionListener(new ActionListener() {
@@ -70,19 +76,25 @@ public class GameBoard extends JFrame {
                 public void actionPerformed(ActionEvent e) {
                     System.out.println(">space 1 clicked");
                     spaceClicked = 0;
+                    displayAnimalDetails(0);
+                    setPlayersPresent(4, player1, false);
                 }
             });
             button1.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 1;
+                    displayAnimalDetails(1);
                     System.out.println(">space 2 clicked");
+
+                    setPlayersPresent(4, player1, true);
                 }
             });
             button2.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 2;
+                    displayAnimalDetails(2);
                     System.out.println(">space 3 clicked");
                 }
             });
@@ -90,6 +102,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 3;
+                    displayAnimalDetails(3);
                     System.out.println(">space 4 clicked");
                 }
             });
@@ -97,6 +110,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 4;
+                    displayAnimalDetails(4);
                     System.out.println(">space 5 clicked");
                 }
             });
@@ -104,6 +118,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 5;
+                    displayAnimalDetails(5);
                     System.out.println(">space 6 clicked");
                 }
             });
@@ -111,6 +126,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 6;
+                    displayAnimalDetails(6);
                     System.out.println(">space 7 clicked");
                 }
             });
@@ -118,6 +134,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 7;
+                    displayAnimalDetails(7);
                     System.out.println(">space 8 clicked");
                 }
             });
@@ -125,6 +142,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 8;
+                    displayAnimalDetails(8);
                     System.out.println(">space 9 clicked");
                 }
             });
@@ -132,6 +150,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 9;
+                    displayAnimalDetails(9);
                     System.out.println(">space 10 clicked");
                 }
             });
@@ -139,6 +158,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 10;
+                    displayAnimalDetails(10);
                     System.out.println(">space 11 clicked");
                 }
             });
@@ -146,6 +166,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 11;
+                    displayAnimalDetails(11);
                     System.out.println(">space 12 clicked");
                 }
             });
@@ -153,6 +174,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 12;
+                    displayAnimalDetails(12);
                     System.out.println(">space 13 clicked");
                 }
             });
@@ -160,6 +182,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 13;
+                    displayAnimalDetails(13);
                     System.out.println(">space 14 clicked");
                 }
             });
@@ -167,6 +190,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 14;
+                    displayAnimalDetails(14);
                     System.out.println(">space 15 clicked");
                 }
             });
@@ -174,6 +198,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 15;
+                    displayAnimalDetails(15);
                     System.out.println(">space 16 clicked");
                 }
             });
@@ -181,6 +206,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 16;
+                    displayAnimalDetails(16);
                     System.out.println(">space 17 clicked");
                 }
             });
@@ -188,6 +214,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 17;
+                    displayAnimalDetails(17);
                     System.out.println(">space 18 clicked");
                 }
             });
@@ -195,6 +222,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 18;
+                    displayAnimalDetails(18);
                     System.out.println(">space 19 clicked");
                 }
             });
@@ -202,6 +230,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 19;
+                    displayAnimalDetails(19);
                     System.out.println(">space 20 clicked");
                 }
             });
@@ -209,6 +238,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 20;
+                    displayAnimalDetails(20);
                     System.out.println(">space 21 clicked");
                 }
             });
@@ -216,6 +246,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 21;
+                    displayAnimalDetails(21);
                     System.out.println(">space 22 clicked");
                 }
             });
@@ -223,6 +254,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 22;
+                    displayAnimalDetails(22);
                     System.out.println(">space 23 clicked");
                 }
             });
@@ -230,6 +262,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 23;
+                    displayAnimalDetails(23);
                     System.out.println(">space 24 clicked");
                 }
             });
@@ -237,6 +270,7 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 24;
+                    displayAnimalDetails(24);
                     System.out.println(">space 25 clicked");
                 }
             });
@@ -244,9 +278,23 @@ public class GameBoard extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     spaceClicked = 25;
+                    displayAnimalDetails(25);
                     System.out.println(">space 26 clicked");
                 }
             });
+            buttonA.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    buttonInputChoice = 0;
+                }
+            });
+            buttonB.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    buttonInputChoice = 1;
+                }
+            });
+
         } // button listeners. I advise keeping this collapsed
     }
 
@@ -326,8 +374,60 @@ public class GameBoard extends JFrame {
     public void setPlayerGUIInput(String newPlayerGUIInput) {
         playerGUIInput.setText(newPlayerGUIInput);
     }
+    public void displayAnimalDetails(int space) {
+        if (space == 0 || space == 13) {
+            return;
+        }
+        String ownedText;
+        int ownerNumber;
+        String ownerName;
+        Animals desiredAnimal = board.getAnimal(space);
+        setAnimalName(desiredAnimal.getName());
 
+        if (desiredAnimal.getOwned()) {
+            ownerNumber = desiredAnimal.getOwnedBy();
+            ownerName = board.playersArray[ownerNumber].getName();getInputMethodRequests();
+            ownedText = "This Animal is owned by " + ownerName + ".";
+        } else { ownedText = "This animal is not owned."; }
+
+        int[] rentCosts = desiredAnimal.getLevels();
+        ArrayList<String> animalstopLevelIcon = new ArrayList<>();
+        for (int i = 0; i < desiredAnimal.getStoplevel(); i++) {
+            animalstopLevelIcon.add("X");
+        }
+        animalstopLevelIcon.add(" ");
+        animalstopLevelIcon.add(" ");
+        animalstopLevelIcon.add(" ");
+        animalstopLevelIcon.add(" ");
+        setAnimalDesc("Location: "+space
+                +"\n"+ownedText
+                +"\n\nCurrent Stop Level: " +desiredAnimal.getStoplevel()
+                +"\nStop Level Upgrade Cost:" + desiredAnimal.getUpgCost()
+                +"\n\nRent Costs for Each Level:"
+                +"\n["+animalstopLevelIcon.get(0)+"] Level 2 - " + rentCosts[0]
+                +"\n["+animalstopLevelIcon.get(1)+"] Level 2 - " + rentCosts[1]
+                +"\n["+animalstopLevelIcon.get(2)+"] Level 3 - " + rentCosts[2]
+                +"\n["+animalstopLevelIcon.get(3)+"] Level 4 - " + rentCosts[3]);
+    } //pass in the number of the animal in the animalArray AKA the space that it resides on
     //we need a way to get the input from this GUI. it means we need to WAIT for the input. perhaps use a listener and a button..
+
+    public int getButtonInput() {
+        int inputChoice = -1;
+        do {
+            try {
+                Thread.sleep(100);
+            } catch(InterruptedException ignored) {
+            }
+
+            inputChoice = buttonInputChoice;
+        } while (inputChoice == -1);
+
+        buttonInputChoice = -1;
+        return inputChoice;
+    } //0=A, 1=B, -1=invalid
+
+
+
 
 }
 

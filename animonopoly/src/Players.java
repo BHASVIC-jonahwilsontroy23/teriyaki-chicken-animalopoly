@@ -25,7 +25,7 @@ public class Players {
     } //we need a way to make this true after they've missed their go.
 
     public void announceName() {
-        System.out.println("____________________________________\n>Player " + name + "'s turn.");
+        System.out.println("____________    ________________________\n>Player " + name + "'s turn.");
     }
 
     public boolean isNextMoveIsAvailable() {

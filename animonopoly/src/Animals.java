@@ -3,7 +3,7 @@ ___________________
 
 
 
-RENT AMOUNTS WILL NOT BE THE SAME WHEN CALLED FROM GetLevels(), this is a ROUGH GUIDE !!!!!
+RENT AMOUNTS WILL NOT BE THE SAME WHEN CALLED FROM getLevels(), this is a ROUGH GUIDE !!!!!
 
 1 Penguin - 100
 
@@ -334,7 +334,7 @@ level 4 rent = 657
 
 group 9
 
-RENT AMOUNTS WILL NOT BE THE SAME WHEN CALLED FROM GetLevels(), this is a ROUGH GUIDE !!!!!
+RENT AMOUNTS WILL NOT BE THE SAME WHEN CALLED FROM getLevels(), this is a ROUGH GUIDE !!!!!
 
 
 ___________________
@@ -351,26 +351,29 @@ public class Animals {
     int stoplevel;
     String name;
     int group;
-    int upgcost;
-    public Animals (int space1, int cost1,int group1,int upgcost1, String name1){
+    int upgCost;
+
+    int ownedBy;
+
+    public Animals (int space1, int cost1,int group1,int upgCost1, String name1){
         space = space1;
         owned = false;
         cost = cost1;
         stoplevel = 0;
         group = group1;
-        upgcost = upgcost1;
+        upgCost = upgCost1;
         name = name1;
+        ownedBy = -1;
     }
 
-
-    public int[] GetLevels(){
+    public int[] getLevels(){
         int l1,l2,l3,l4;
         int costlocal = cost;
         l1 = 2+costlocal/10;
         l2 = costlocal/4;
         l3 = l2*5;
         l4 = l3*3;
-        int levels[] = {l1,l2,l3,l4};
+        int[] levels = {l1,l2,l3,l4};
         System.out.println(l1+" "+l2+" "+l3+" "+l4);
         return levels;
 
@@ -379,7 +382,7 @@ public class Animals {
         /*
         example:
 
-        variable = Badger.GetLevels();
+        variable = Badger.getLevels();
         System.out.println(variable)
 
         will output [rentlevel1,rentlevel2,rentlevel3,rentlevel4]
@@ -388,5 +391,19 @@ public class Animals {
 
     public String getName() {
         return name;
+    }
+
+    public boolean getOwned() {
+        return owned;
+    }
+    public int getOwnedBy() {
+        return ownedBy;
+    }
+    public int getStoplevel() {
+        return stoplevel;
+    }
+
+    public int getUpgCost() {
+        return upgCost;
     }
 }

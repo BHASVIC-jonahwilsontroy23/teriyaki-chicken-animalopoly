@@ -1197,6 +1197,7 @@
         </constraints>
         <properties>
           <background color="-14013381"/>
+          <foreground color="-14013381"/>
         </properties>
         <border type="none"/>
         <children>
@@ -1216,21 +1217,71 @@
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
-          <component id="71251" class="javax.swing.JTextField" binding="playerGUIInput">
-            <constraints>
-              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="-1"/>
-              </grid>
-            </constraints>
-            <properties>
-              <text value="input"/>
-            </properties>
-          </component>
           <vspacer id="32cb2">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
+          <grid id="b3504" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <foreground color="-14078916"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="792ab" class="javax.swing.JButton" binding="buttonB">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="20"/>
+                    <maximum-size width="200" height="40"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <alignmentY value="0.5"/>
+                  <background color="-14144709"/>
+                  <focusCycleRoot value="false"/>
+                  <focusTraversalPolicyProvider value="false"/>
+                  <focusable value="true"/>
+                  <foreground color="-1782613"/>
+                  <hideActionText value="false"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="2"/>
+                  <iconTextGap value="4"/>
+                  <selected value="false"/>
+                  <text value="B" noi18n="true"/>
+                  <verifyInputWhenFocusTarget value="true"/>
+                  <verticalTextPosition value="1"/>
+                </properties>
+              </component>
+              <component id="ae570" class="javax.swing.JButton" binding="buttonA">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <preferred-size width="150" height="20"/>
+                    <maximum-size width="200" height="40"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <alignmentY value="0.5"/>
+                  <background color="-14144709"/>
+                  <focusCycleRoot value="false"/>
+                  <focusTraversalPolicyProvider value="false"/>
+                  <focusable value="true"/>
+                  <foreground color="-1782613"/>
+                  <hideActionText value="false"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="2"/>
+                  <iconTextGap value="4"/>
+                  <selected value="false"/>
+                  <text value="A" noi18n="true"/>
+                  <verifyInputWhenFocusTarget value="true"/>
+                  <verticalTextPosition value="1"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
         </children>
       </grid>
     </children>
