@@ -21,20 +21,26 @@ public class Main {
         String input = scan.nextLine();
         System.out.println(input);
         */
-        while(1 == 1){
+        while (1 == 1) {
             int playerscount = board.playersArray.length + 1;
             for (int i = 0; i < playerscount; i++) {
-                Scanner scan = new Scanner(System.in);
-                int roll = 2;
-                while(roll != 1){
-                    System.out.println("1 to roll dice.");
-                    roll = Integer.parseInt(scan.nextLine());
-                    if (roll != 1){
-                        System.out.println("Enter 1 to start.");
+
+                if (board.playersArray[i].bankruptcyCheck() == false) {
+                    System.out.println("Player "+i+", it is your turn.");
+                    Scanner scan = new Scanner(System.in);
+                    int roll = 2;
+                    while (roll != 1) {
+                        System.out.println("1 to roll dice.");
+                        roll = Integer.parseInt(scan.nextLine());
+                        if (roll == 1) {
+                            //roll dice
+                        }
+                        if (roll != 1) {
+                            System.out.println("Enter 1 to start.");
+                        }
                     }
                 }
             }
         }
     }
-
 }
