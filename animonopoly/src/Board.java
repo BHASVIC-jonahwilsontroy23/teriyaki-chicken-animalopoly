@@ -63,7 +63,6 @@ public class Board {
             String nameInput;
             while (true) {
                 System.out.println("Enter your name (<20 characters & unique): ");
-                nameInput = scan.nextLine(); //not actually redundant.
                 nameInput = scan.nextLine();
                 if (playerInfoInputIsValid(nameInput, 0)) {
                     System.out.println(">Input accepted");
