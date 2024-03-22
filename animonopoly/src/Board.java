@@ -1,19 +1,24 @@
-package animonopoly.src;
+//package animonopoly.src;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 public class Board {
     int playersRemaining;
 
     Players[] playersArray; //2-8 players
+    GameBoard gameBoard;
+
+    Cards[] cardArray;
 
     public Board() {
         Scanner scan = new Scanner(System.in);
-        Dice die = new Dice();
+        DiceRoll die = new DiceRoll();
         initialiseAnimals();
         GameBoard gameBoard = new GameBoard(this);
         initialisePlayers();
-
+        gameLoop();
+        initialiseCards();
     }
     Animals[] animalArray = new Animals[26];
     public void initialiseAnimals(){
@@ -159,4 +164,90 @@ public class Board {
         return desiredPlayerCount;
     }
 
+    public void gameLoop() {
+        do {
+            for (Players players : playersArray) {
+                if (!players.bankruptcyCheck()) {
+                    players.announceName();
+                    gameBoard.setGUIConsoleText("[A] Roll\n[B]Upgrade Animal");
+                    if (gameBoard.buttonInputChoice == 0) { // A - Roll
+                    dice
+
+                    }
+
+                }
+            }
+        } while (!gameover());
+        gameBoard.setGUIConsoleText("Game over. <IDK> has one!!");
+    }
+/*
+while (1 == 1) {
+        int playerscount = board.playersArray.length + 1;
+        for (int i = 0; i < playerscount-1; i++) {
+
+            if (board.playersArray[i].bankruptcyCheck() == false) {
+                board.playersArray[i].getName();
+                System.out.println(nameplayer+", it is your turn.");
+                Scanner scan = new Scanner(System.in);
+                int roll = 2;
+                while (roll != 1) {
+                    System.out.println("1 to roll dice.");
+                    roll = Integer.parseInt(scan.nextLine());
+                    if (roll == 1) {
+                        //roll dice
+                    }
+                    if (roll != 1) {
+                        System.out.println("Enter 1 to start.");
+                    }
+                }
+            }
+        }
+    }
+*/
+    
+    public void initialiseCards() {
+
+        cardArray = new Cards[20];
+
+        cardArray[0] = new Cards();
+        cardArray[1] = new Cards();
+        cardArray[2] = new Cards();
+        cardArray[3] = new Cards();
+        cardArray[4] = new Cards();
+        cardArray[5] = new Cards();
+        cardArray[6] = new Cards();
+        cardArray[7] = new Cards();
+        cardArray[8] = new Cards();
+        cardArray[9] = new Cards();
+        cardArray[10] = new Cards();
+        cardArray[11] = new Cards();
+        cardArray[12] = new Cards();
+        cardArray[13] = new Cards();
+        cardArray[14] = new Cards();
+        cardArray[15] = new Cards();
+        cardArray[16] = new Cards();
+        cardArray[17] = new Cards();
+        cardArray[18] = new Cards();
+        cardArray[19] = new Cards();
+        cardArray[0].setData(10, "you were dared to eat a rotten bean, You did it claim 10.");
+        cardArray[1].setData(20, "You caught your older brother stealing your parents money. Blackmail him for $20.");
+        cardArray[2].setData(50,"You were asked to jump of a bridge into water and succeeded! Collect $50 from your coach who bet against you.");
+        cardArray[3].setData(75,"You won a car race against a old friend. Collect $75 and laugh at him.");
+        cardArray[4].setData(25,"You dunked your basketball coach. Collect $25 because he bet you couldn't.");
+        cardArray[5].setData(30,"You convinced your parents to give you money for 'food'. Collect $30.");
+        cardArray[6].setData(100,"You found a ring on the floor and sold it. Collect $100.");
+        cardArray[7].setData(70,"You saved a family from a house fire . Collect $70 for you heroic act.");
+        cardArray[8].setData(15,"You just inherited a new porsche. Collect $15 for your toy porsche.");
+        cardArray[9].setData(95,"You trapped a famous criminal. Collect $95 for your bravery.");
+        cardArray[10].setData(-50,"You tried your luck in the casino. Pay $50, maybe another time.");
+        cardArray[11].setData(-20,"You passed out drunk at your friends. Pay them $20 and dont throw up again.");
+        cardArray[12].setData(-100,"You took your dog to the vet. Pay $100 for treatment.");
+        cardArray[13].setData(-30,"You didnt pass your driving test. Pay $30 and try again.");
+        cardArray[14].setData(-75,"You accidentally stepped in poo. Pay $75 for new shoes.");
+        cardArray[15].setData(-40,"You forgot to lock your car and it got stolen. Pay $40 for a new form of transport.");
+        cardArray[16].setData(-60,"You need to buy your family christmas presents. Pay $60.");
+        cardArray[17].setData(-90,"You ran into your neighbors motorbike. Pay $90 for the embarrassment.");
+        cardArray[18].setData(-50,"You lost your wallet at the supermarket. Pay $50.");
+        cardArray[19].setData(-15,"You spilled red soda on your brand new white shoes. Pay $15 for the stain remover.");
+    }
 }

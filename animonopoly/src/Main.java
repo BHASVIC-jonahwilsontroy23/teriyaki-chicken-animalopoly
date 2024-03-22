@@ -21,27 +21,5 @@ public class Main {
         String input = scan.nextLine();
         System.out.println(input);
         */
-        while (1 == 1) {
-            int playerscount = board.playersArray.length + 1;
-            for (int i = 0; i < playerscount-1; i++) {
-
-                if (board.playersArray[i].bankruptcyCheck() == false) {
-                    String nameplayer = board.playersArray[i].getName();
-                    System.out.println(nameplayer+", it is your turn.");
-                    Scanner scan = new Scanner(System.in);
-                    int roll = 2;
-                    while (roll != 1) {
-                        System.out.println("1 to roll dice.");
-                        roll = Integer.parseInt(scan.nextLine());
-                        if (roll == 1) {
-                            //roll dice
-                        }
-                        if (roll != 1) {
-                            System.out.println("Enter 1 to start.");
-                        }
-                    }
-                }
-            }
-        }
     }
 }

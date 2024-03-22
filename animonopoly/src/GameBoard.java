@@ -427,7 +427,5 @@ public class GameBoard extends JFrame {
     } //0=A, 1=B, -1=invalid
 
 
-
-
 }
 
