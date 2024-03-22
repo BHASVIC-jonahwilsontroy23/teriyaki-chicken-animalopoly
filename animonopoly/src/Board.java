@@ -10,15 +10,17 @@ public class Board {
     GameBoard gameBoard;
 
     Cards[] cardArray;
+    DiceRoll die;
 
-    public Board() {
+    public Board(){
         Scanner scan = new Scanner(System.in);
-        DiceRoll die = new DiceRoll();
         initialiseAnimals();
-        GameBoard gameBoard = new GameBoard(this);
-        initialisePlayers();
+        gameBoard = new GameBoard(this);
+        DiceRoll die = new DiceRoll(gameBoard);
         gameLoop();
         initialiseCards();
+        animalArray[1].stoplevel = 3;
+        initialisePlayers();
     }
     Animals[] animalArray = new Animals[26];
     public void initialiseAnimals(){
@@ -165,19 +167,23 @@ public class Board {
     }
 
     public void gameLoop() {
+        /*
         do {
             for (Players players : playersArray) {
                 if (!players.bankruptcyCheck()) {
                     players.announceName();
                     gameBoard.setGUIConsoleText("[A] Roll\n[B]Upgrade Animal");
                     if (gameBoard.buttonInputChoice == 0) { // A - Roll
-                    dice
-
+                    die.roll();
+                    //rest of code.
+                    //
                     }
 
                 }
             }
-        } while (!gameover());
+        //} while (!gameover());
+         } while (!playersArray[0].bankruptcyCheck());
+         */
         gameBoard.setGUIConsoleText("Game over. <IDK> has one!!");
     }
 /*

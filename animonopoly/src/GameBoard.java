@@ -395,10 +395,10 @@ public class GameBoard extends JFrame {
         for (int i = 0; i < desiredAnimal.getStoplevel(); i++) {
             animalstopLevelIcon.add("X");
         }
-        animalstopLevelIcon.add(" ");
-        animalstopLevelIcon.add(" ");
-        animalstopLevelIcon.add(" ");
-        animalstopLevelIcon.add(" ");
+        animalstopLevelIcon.add("  ");
+        animalstopLevelIcon.add("  ");
+        animalstopLevelIcon.add("  ");
+        animalstopLevelIcon.add("  ");
         setAnimalDesc("Location: "+space
                 +"\n"+ownedText
                 +"\n\nCurrent Stop Level: " +desiredAnimal.getStoplevel()

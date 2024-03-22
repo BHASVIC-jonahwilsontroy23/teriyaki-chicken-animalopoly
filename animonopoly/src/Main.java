@@ -23,3 +23,9 @@ public class Main {
         */
     }
 }
+
+
+
+//for jonah: make input console line invis after entering names.
+//for every1: make game loop, gameOver detection
+// for jonah & luke: click animal tile to select which animal to upgrade
