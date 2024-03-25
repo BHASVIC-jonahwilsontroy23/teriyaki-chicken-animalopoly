@@ -5,7 +5,9 @@ import java.util.ArrayList;
 public class GameBoard extends JFrame {
     String[] spacesText = new String[26];
     JButton[] spacesArray = new JButton[26];
+
     int spaceClicked = -1; //-1 means that there is no valid space last clicked.
+
     int buttonInputChoice = -1;
     private JPanel panel1;
     private JPanel animalViewerContainer;
@@ -55,7 +57,6 @@ public class GameBoard extends JFrame {
     private JTextField textField1;
     Board board;
     int myInteger = 0;
-
     public GameBoard(Board boardObjectPointer) {
         board = boardObjectPointer;
         setContentPane(panel1);
@@ -325,6 +326,7 @@ public class GameBoard extends JFrame {
         }
         spacesArray[space].setText(text);
     } // enabling remove, removes the players piece from a space.
+
     public void initialiseGameBoard() {
         spacesArray[0] = button0;
         spacesArray[1] = button1;
@@ -411,7 +413,6 @@ public class GameBoard extends JFrame {
                 +"\n["+animalstopLevelIcon.get(3)+"] Level 4 - " + rentCosts[3]);
     } //pass in the number of the animal in the animalArray AKA the space that it resides on
     //we need a way to get the input from this GUI. it means we need to WAIT for the input. perhaps use a listener and a button..
-
     public int getButtonInput() {
         int inputChoice = -1;
         do {
@@ -426,6 +427,10 @@ public class GameBoard extends JFrame {
         buttonInputChoice = -1;
         return inputChoice;
     } //0=A, 1=B, -1=invalid
+
+    public int getSpaceClicked() {
+        return spaceClicked;
+    }
 
 
 }
