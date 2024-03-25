@@ -6,15 +6,18 @@ import java.util.Scanner;
 public class DiceRoll
 {
     GameBoard gameBoard;
+    int firstDice;
+    int secondDice;
     public DiceRoll(GameBoard gameBoard1) {
         gameBoard = gameBoard1;
     }
+
     public void roll() {
     Random random = new Random();
 
-    int firstDice = random.nextInt(6) + 1;
-    int secondDice = random.nextInt(6) + 1;
-    String text = "You got " + firstDice + " and " + secondDice + ".";
+    firstDice = random.nextInt(6) + 1;
+    secondDice = random.nextInt(6) + 1;
+    String text = ">Rolling dice\nYou got " + firstDice + " and " + secondDice + ".";
     if (firstDice == secondDice)
     {
         text = text + "\nDouble! You get a card!";
@@ -22,5 +25,11 @@ public class DiceRoll
         gameBoard.setGUIConsoleText(text);
 
     }
+    public int getFirstDice() {
+        return firstDice;
+    }
 
+    public int getSecondDice() {
+        return secondDice;
+    }
 }

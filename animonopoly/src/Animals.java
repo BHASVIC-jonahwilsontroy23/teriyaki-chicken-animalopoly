@@ -406,4 +406,6 @@ public class Animals {
     public int getUpgCost() {
         return upgCost;
     }
+
+    public int getCost() {return cost;}
 }

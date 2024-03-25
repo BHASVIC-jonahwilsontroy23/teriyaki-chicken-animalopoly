@@ -54,7 +54,7 @@ public class GameBoard extends JFrame {
     private JButton button25;
     private JButton buttonA;
     private JButton buttonB;
-    private JTextField textField1;
+    private JTextField textInputField;
     Board board;
     int myInteger = 0;
     public GameBoard(Board boardObjectPointer) {
@@ -373,6 +373,9 @@ public class GameBoard extends JFrame {
     }
     public void setGUIConsoleText(String newGUIConsoleText) {
         GUIConsoleText.setText(newGUIConsoleText);
+    }
+    public String getGUIConsoleText() {
+        return GUIConsoleText.getText();
     }
     public void setPlayerGUIInput(String newPlayerGUIInput) {
         playerGUIInput.setText(newPlayerGUIInput);

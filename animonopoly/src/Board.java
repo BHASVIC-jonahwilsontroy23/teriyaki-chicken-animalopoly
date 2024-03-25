@@ -2,6 +2,7 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Board {
     int playersRemaining;
@@ -166,19 +167,66 @@ public class Board {
     }
 
     public void gameLoop() {
-
+        String text;
+        int oldLocation;
+        int newLocation;
+        int fee;
         do {
-            for (Players players : playersArray) {
-                if (!players.bankruptcyCheck()) {
-                    players.announceName();
-                    gameBoard.setGUIConsoleText("[A] Roll\n[B]Upgrade Animal");
+            for (Players player : playersArray) {
+                if (!player.bankruptcyCheck() & player.isNextMoveIsAvailable()) {
+                    player.announceName();
+                    text = gameBoard.getGUIConsoleText() + "[A] Roll\n[B]Upgrade Animal";
+                            gameBoard.setGUIConsoleText(text);
                     if (gameBoard.getButtonInput() == 0) { // A - Roll
                     die.roll();
                     } else { // B - upgrade
                         upgradeAnimal();
+                        die.roll();
                     }
-                    //pick card if double
-                    //buy animal or pay fee
+                    if (die.getFirstDice() == die.getSecondDice()) {
+                        pickCard(player);
+                    }
+                    text = gameBoard.getGUIConsoleText() + "\n>Press anything to continue";
+                    gameBoard.setGUIConsoleText(text);
+                    gameBoard.getButtonInput();
+                    {
+                        oldLocation = player.getLocation();
+                        newLocation = player.getLocation() + die.getFirstDice() +die.getSecondDice();
+                        if (newLocation > 25) {
+                            newLocation = newLocation -26;
+                            text = gameBoard.getGUIConsoleText() + "\n>You passed Go. Collect $200";
+                            player.setMoney(player.getMoney() + 200);
+                            gameBoard.setGUIConsoleText(text);
+                        } //(probable errors) PASS GO
+                        movePlayer(player, oldLocation, newLocation);
+                        player.setLocation(newLocation);
+                        gameBoard.displayAnimalDetails(newLocation);
+                    } //move player
+                    if (newLocation == 13 || newLocation == 0) {
+                        if (newLocation == 13) {
+                            text = gameBoard.getGUIConsoleText() + "\n>You will miss your next go.";
+                            player.missAGo();
+                            gameBoard.setGUIConsoleText(text);
+                        }
+                    } else if (animalArray[newLocation].getOwned()) {
+                        {
+                            text = gameBoard.getGUIConsoleText() + "\nYou just landed on an owned space";
+                            gameBoard.setGUIConsoleText(text);
+                            player.setMoney(player.getMoney() + 200);
+                            fee = animalArray[newLocation].getCost();
+                            player.setMoney(player.getMoney() - fee);
+                            text = gameBoard.getGUIConsoleText() + "\nYou just paid a $" + fee + "fee.";
+                            gameBoard.setGUIConsoleText(text);
+                            if (player.bankruptcyCheck()) {
+                                text = gameBoard.getGUIConsoleText() + "\nYou have been bankrupted. You are out of the game.";
+                                gameBoard.setGUIConsoleText(text);
+                            }
+                        } //pay fee
+                    } else {
+                        text = gameBoard.getGUIConsoleText() + "\nThis space is unowned.\n[A] purchase\n[B] skip"; //there is an edge case of "start and miss ago"
+                        gameBoard.setGUIConsoleText(text);
+                        //offer purchase
+                    }
                     //win check
                 }
             }
@@ -186,6 +234,19 @@ public class Board {
          } while (!playersArray[0].bankruptcyCheck());
 
         gameBoard.setGUIConsoleText("Game over. <IDK> has one!!");
+    }
+
+    private void movePlayer(Players player, int oldSpace, int newSpace) {
+        gameBoard.setPlayersPresent(oldSpace, player, true);
+        gameBoard.setPlayersPresent(newSpace, player, false);
+    }
+
+    private void pickCard(Players player) {
+        Random random = new Random();
+        int cardNumber = random.nextInt(20);
+        Cards desiredCard = cardArray[cardNumber];
+        gameBoard.setGUIConsoleText(desiredCard.getMessage());
+        player.setMoney(player.getMoney() + desiredCard.getCost());
     }
 /*
 while (1 == 1) {

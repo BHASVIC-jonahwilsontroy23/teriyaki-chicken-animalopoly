@@ -6,6 +6,16 @@ public class Players {
     String playingPiece;
     String name;
     Board board;
+    int location;
+
+    public int getLocation() {
+        return location;
+    }
+
+    public void setLocation(int location) {
+        this.location = location;
+    }
+
     boolean nextMoveIsAvailable;
 
     public Players(String nameInput, String playingPieceInput, Board boardInput) {
@@ -29,7 +39,11 @@ public class Players {
     }
 
     public boolean isNextMoveIsAvailable() {
-        return nextMoveIsAvailable;
+        if (!nextMoveIsAvailable) {
+            nextMoveIsAvailable = true;
+            return false;
+        }
+        return true;
     }
 
     public boolean winCheck() {
