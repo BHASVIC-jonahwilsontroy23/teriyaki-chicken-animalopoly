@@ -17,10 +17,9 @@ public class Board {
         initialiseAnimals();
         gameBoard = new GameBoard(this);
         DiceRoll die = new DiceRoll(gameBoard);
-        gameLoop();
         initialiseCards();
-        animalArray[1].stoplevel = 3;
         initialisePlayers();
+        gameLoop();
     }
     Animals[] animalArray = new Animals[26];
     public void initialiseAnimals(){
@@ -167,23 +166,25 @@ public class Board {
     }
 
     public void gameLoop() {
-        /*
+
         do {
             for (Players players : playersArray) {
                 if (!players.bankruptcyCheck()) {
                     players.announceName();
                     gameBoard.setGUIConsoleText("[A] Roll\n[B]Upgrade Animal");
-                    if (gameBoard.buttonInputChoice == 0) { // A - Roll
+                    if (gameBoard.getButtonInput() == 0) { // A - Roll
                     die.roll();
-                    //rest of code.
-                    //
+                    } else { // B - upgrade
+                        upgradeAnimal();
                     }
-
+                    //pick card if double
+                    //buy animal or pay fee
+                    //win check
                 }
             }
         //} while (!gameover());
          } while (!playersArray[0].bankruptcyCheck());
-         */
+
         gameBoard.setGUIConsoleText("Game over. <IDK> has one!!");
     }
 /*

@@ -14,12 +14,13 @@ public class DiceRoll
 
     int firstDice = random.nextInt(6) + 1;
     int secondDice = random.nextInt(6) + 1;
-
-    gameBoard.setGUIConsoleText("You got " + firstDice + " and " + secondDice + ".");
+    String text = "You got " + firstDice + " and " + secondDice + ".";
     if (firstDice == secondDice)
     {
-        System.out.println("Double! You get a card!");
+        text = text + "\nDouble! You get a card!";
     }
-}
+        gameBoard.setGUIConsoleText(text);
+
+    }
 
 }

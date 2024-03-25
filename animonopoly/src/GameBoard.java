@@ -52,6 +52,7 @@ public class GameBoard extends JFrame {
     private JButton button25;
     private JButton buttonA;
     private JButton buttonB;
+    private JTextField textField1;
     Board board;
     int myInteger = 0;
 
