@@ -353,6 +353,20 @@ public class Animals {
     int group;
     int upgCost;
 
+    Players owner;
+
+    public void setOwner(Players owner) {
+        this.owner = owner;
+    }
+
+    public Players getOwner() {
+        return owner;
+    }
+
+    public void setOwned(boolean owned) {
+        this.owned = owned;
+    }
+
     int ownedBy;
 
     public Animals (int space1, int cost1,int group1,int upgCost1, String name1){

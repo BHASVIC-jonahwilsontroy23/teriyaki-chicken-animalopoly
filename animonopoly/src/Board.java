@@ -11,7 +11,7 @@ public class Board {
     GameBoard gameBoard;
 
     Cards[] cardArray;
-    DiceRoll die;
+    DiceRoll die = new DiceRoll(gameBoard);
 
     public Board(){
         Scanner scan = new Scanner(System.in);
@@ -180,7 +180,7 @@ public class Board {
                     if (gameBoard.getButtonInput() == 0) { // A - Roll
                     die.roll();
                     } else { // B - upgrade
-                        upgradeAnimal();
+                        //upgradeAnimal(); THIS AINT COMPLETED !!! THIS AINT COMPLETED !!! THIS AINT COMPLETED !!! THIS AINT COMPLETED !!! THIS AINT COMPLETED !!! THIS AINT COMPLETED !!! THIS AINT COMPLETED !!!
                         die.roll();
                     }
                     if (die.getFirstDice() == die.getSecondDice()) {
@@ -215,6 +215,7 @@ public class Board {
                             player.setMoney(player.getMoney() + 200);
                             fee = animalArray[newLocation].getCost();
                             player.setMoney(player.getMoney() - fee);
+                            animalArray[newLocation].getOwner().setMoney(player.getMoney() + fee); //adds money moolah ka-ching
                             text = gameBoard.getGUIConsoleText() + "\nYou just paid a $" + fee + "fee.";
                             gameBoard.setGUIConsoleText(text);
                             if (player.bankruptcyCheck()) {
@@ -223,17 +224,50 @@ public class Board {
                             }
                         } //pay fee
                     } else {
+                        {
                         text = gameBoard.getGUIConsoleText() + "\nThis space is unowned.\n[A] purchase\n[B] skip"; //there is an edge case of "start and miss ago"
                         gameBoard.setGUIConsoleText(text);
-                        //offer purchase
+                        if (gameBoard.getButtonInput() == 0) {
+                            //yes to purchase animal
+                            Animals desiredAnimal = animalArray[newLocation];
+                            //can afford check
+                            if (desiredAnimal.getUpgCost() < player.getMoney()) {  //upg cost vs cost ??? whats rent and what is purchase price??? ????? and how does upg cost change???
+                                desiredAnimal.setOwned(true);
+                                desiredAnimal.setOwner(player);
+                                player.setMoney(player.getMoney() - desiredAnimal.getUpgCost());
+                            } else {
+                                text = gameBoard.getGUIConsoleText() + "\n>You cant afford this lmao";
+                                gameBoard.setGUIConsoleText(text);
+                            }
+                        } else {
+                            text = gameBoard.getGUIConsoleText() + "\n>skipped";
+                            gameBoard.setGUIConsoleText(text);
+                        }
+                        }//offer purchase
                     }
                     //win check
                 }
             }
-        //} while (!gameover());
-         } while (!playersArray[0].bankruptcyCheck());
+        } while (!gameover());
 
         gameBoard.setGUIConsoleText("Game over. <IDK> has one!!");
+    }
+
+    private boolean gameover() {
+        int corpses = 0;
+        String text;
+        for (Players player : playersArray) {
+            if (player.bankruptcyCheck()) {corpses += 1;}
+        }
+        if (corpses == playersArray.length) {
+            text = gameBoard.getGUIConsoleText() + "\n>everyone is dead lmao";
+            gameBoard.setGUIConsoleText(text);
+        } else if (corpses == playersArray.length -1) {
+            text = gameBoard.getGUIConsoleText() + "\n>Game is over.";
+            gameBoard.setGUIConsoleText(text);
+            return true;
+        }
+        return false;
     }
 
     private void movePlayer(Players player, int oldSpace, int newSpace) {
