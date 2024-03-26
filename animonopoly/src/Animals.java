@@ -367,8 +367,6 @@ public class Animals {
         this.owned = owned;
     }
 
-    int ownedBy;
-
     public Animals (int space1, int cost1,int group1,int upgCost1, String name1){
         space = space1;
         owned = false;
@@ -377,7 +375,6 @@ public class Animals {
         group = group1;
         upgCost = upgCost1;
         name = name1;
-        ownedBy = -1;
     }
 
     public int[] getLevels(){
@@ -409,9 +406,6 @@ public class Animals {
 
     public boolean getOwned() {
         return owned;
-    }
-    public int getOwnedBy() {
-        return ownedBy;
     }
     public int getStoplevel() {
         return stoplevel;

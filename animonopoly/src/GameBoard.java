@@ -380,6 +380,18 @@ public class GameBoard extends JFrame {
     public void setPlayerGUIInput(String newPlayerGUIInput) {
         playerGUIInput.setText(newPlayerGUIInput);
     }
+
+    public void makeTextInputInvisible() {
+        textInputField.setVisible(false);
+    }
+
+    public void clearTextInput() {
+        textInputField.setText("");
+    }
+
+    public String getTextInputText() {
+        return textInputField.getText();
+    }
     public void displayAnimalDetails(int space) {
         if (space == 0 || space == 13) {
             return;
@@ -391,9 +403,7 @@ public class GameBoard extends JFrame {
         setAnimalName(desiredAnimal.getName());
 
         if (desiredAnimal.getOwned()) {
-            ownerNumber = desiredAnimal.getOwnedBy();
-            ownerName = board.playersArray[ownerNumber].getName();getInputMethodRequests();
-            ownedText = "This Animal is owned by " + ownerName + ".";
+            ownedText = "Owner: " + desiredAnimal.getOwner().getName();
         } else { ownedText = "This animal is not owned."; }
 
         int[] rentCosts = desiredAnimal.getLevels();

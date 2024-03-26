@@ -1,7 +1,6 @@
 //package animonopoly.src;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 import java.util.Random;
 
 public class Board {
@@ -11,13 +10,12 @@ public class Board {
     GameBoard gameBoard;
 
     Cards[] cardArray;
-    DiceRoll die = new DiceRoll(gameBoard);
+    DiceRoll die;
 
     public Board(){
-        Scanner scan = new Scanner(System.in);
         initialiseAnimals();
         gameBoard = new GameBoard(this);
-        DiceRoll die = new DiceRoll(gameBoard);
+        die = new DiceRoll(gameBoard);
         initialiseCards();
         initialisePlayers();
         gameLoop();
@@ -57,44 +55,55 @@ public class Board {
     }
 
     public void initialisePlayers() {
-        System.out.println(">Initialising players");
+        gameBoard.setGUIConsoleText("\n>Initialising Players");
         ArrayList<Players> players = new ArrayList<>();
 
-        Scanner scan = new Scanner(System.in);
         int desiredPlayerCount = getDesiredPlayerCount();
 
         playersArray = new Players[desiredPlayerCount];
+        String text;
 
         for (int i=0; i<desiredPlayerCount; i++) {
-            System.out.println("_____________________________");
-            System.out.println("For player " + (i+1) + ":");
-
+            text = gameBoard.getGUIConsoleText() + "\n\nFor player " + (i+1) + ":";
+            gameBoard.setGUIConsoleText(text);
             String nameInput;
             while (true) {
-                System.out.println("Enter your name (<20 characters & unique): ");
-                nameInput = scan.nextLine();
+                text = gameBoard.getGUIConsoleText() + "\n\nEnter your name (<20 characters & unique).\n[A] Enter";
+                gameBoard.setGUIConsoleText(text);
+                gameBoard.clearTextInput();
+                gameBoard.getButtonInput();
+                nameInput = gameBoard.getTextInputText();
                 if (playerInfoInputIsValid(nameInput, 0)) {
-                    System.out.println(">Input accepted");
+                    text = gameBoard.getGUIConsoleText() + "\n>'" +nameInput+ "' accepted";
+                    gameBoard.setGUIConsoleText(text);
                     break;
                 } else {
-                    System.out.println(">Input is invalid");
+                    text = gameBoard.getGUIConsoleText() + "\n>'" +nameInput+ "' not accepted";
+                    gameBoard.setGUIConsoleText(text);
+
                 }
+
             }
 
             String playingPieceInput;
             while (true) {
-                System.out.println("Enter your playing piece (<4 characters & be creative!): ");
-                playingPieceInput = scan.nextLine();
+                text = gameBoard.getGUIConsoleText() + "\nEnter your playing piece (<4 characters & be creative!)\n[A] Enter";
+                gameBoard.setGUIConsoleText(text);
+                gameBoard.getButtonInput();
+                playingPieceInput = gameBoard.getTextInputText();
                 if (playerInfoInputIsValid(playingPieceInput, 1)) {
-                    System.out.println(">Input accepted");
+                    text = gameBoard.getGUIConsoleText() + "\n>'" +playingPieceInput+ "' accepted";
+                    gameBoard.setGUIConsoleText(text);
                     break;
                 } else {
-                    System.out.println(">Input not accepted");
+                    text = gameBoard.getGUIConsoleText() + "\n>'" +playingPieceInput+ "' not accepted";
+                    gameBoard.setGUIConsoleText(text);
                 }
             }
 
             playersArray[i] = new Players(nameInput, playingPieceInput, this);
-            System.out.println("Your name is now: " + playersArray[i].getName() + "\nAnd your piece is: " + playersArray[i].getPlayingPiece());
+            text = gameBoard.getGUIConsoleText() + "\n\nYour name is now: " + playersArray[i].getName() + "\nAnd your piece is: " + playersArray[i].getPlayingPiece();
+            gameBoard.setGUIConsoleText(text);
 
         }
 
@@ -102,6 +111,7 @@ public class Board {
         //instantiate a dice object
         //keep track of turns, and display player's name with player.announceName();
 
+    gameBoard.makeTextInputInvisible();
     }
     public Animals getAnimal(int index) {
         return animalArray[index];
@@ -141,25 +151,33 @@ public class Board {
     }
 
     public int getDesiredPlayerCount() {
-        Scanner scan = new Scanner(System.in);
         int desiredPlayerCount = 0;
+        String text;
         while (true) {
-            System.out.println("How many players will be playing? (2-8)");
+            text = gameBoard.getGUIConsoleText() + "\nHow many players will be playing? (2-8)\n[A] enter";
+            gameBoard.setGUIConsoleText(text);
+            gameBoard.getButtonInput();
+
             try {
 
 
-                    desiredPlayerCount = Integer.parseInt(scan.nextLine());
+                    desiredPlayerCount = Integer.parseInt(gameBoard.getTextInputText());
 
                     if (desiredPlayerCount <= 8 && desiredPlayerCount >= 2) {
+                        text = gameBoard.getGUIConsoleText() + "\nInput '" + desiredPlayerCount + "' accepted";
+                        gameBoard.setGUIConsoleText(text);
                         break;
                     } else {
-                        System.out.println(">Invalid input value");
+                        text = gameBoard.getGUIConsoleText() + "\n>Invalid input value";
+                        gameBoard.setGUIConsoleText(text);
                     }
 
 
 
             } catch (NumberFormatException e) {
-                System.out.println(">Invalid input format");
+                text = gameBoard.getGUIConsoleText() + "\n>Invalid input format";
+                gameBoard.setGUIConsoleText(text);
+
             }
         }
 
@@ -174,8 +192,8 @@ public class Board {
         do {
             for (Players player : playersArray) {
                 if (!player.bankruptcyCheck() & player.isNextMoveIsAvailable()) {
-                    player.announceName();
-                    text = gameBoard.getGUIConsoleText() + "[A] Roll\n[B]Upgrade Animal";
+                    player.announceName(); //kinda redundant now but Ill leave it here
+                    text = gameBoard.getGUIConsoleText() + "\nPlayer " + player.getName()  + "'s turn.\nBalance: " + player.getMoney() + "\n[A] Roll\n[B]Upgrade Animal";
                             gameBoard.setGUIConsoleText(text);
                     if (gameBoard.getButtonInput() == 0) { // A - Roll
                     die.roll();
@@ -279,7 +297,7 @@ public class Board {
         Random random = new Random();
         int cardNumber = random.nextInt(20);
         Cards desiredCard = cardArray[cardNumber];
-        gameBoard.setGUIConsoleText(desiredCard.getMessage());
+        gameBoard.setGUIConsoleText(gameBoard.getGUIConsoleText() + "\n" + desiredCard.getMessage());
         player.setMoney(player.getMoney() + desiredCard.getCost());
     }
 /*

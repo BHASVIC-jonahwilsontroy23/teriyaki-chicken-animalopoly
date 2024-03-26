@@ -17,7 +17,7 @@ public class DiceRoll
 
     firstDice = random.nextInt(6) + 1;
     secondDice = random.nextInt(6) + 1;
-    String text = ">Rolling dice\nYou got " + firstDice + " and " + secondDice + ".";
+    String text = gameBoard.getGUIConsoleText() + "\nRolling dice\nYou got " + firstDice + " and " + secondDice + ".";
     if (firstDice == secondDice)
     {
         text = text + "\nDouble! You get a card!";
